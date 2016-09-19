@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import AFNetworking
-import Alamofire
-import SwiftyJSON
+//import AFNetworking
+//import Alamofire
+//import SwiftyJSON
 
 class ViewController: UIViewController {
   
@@ -33,37 +33,37 @@ class ViewController: UIViewController {
 //    let tag = book.tags.first
 //    debugPrint(book)
     
-    let castUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("casts", ofType: nil)!)
-    let castsData = NSData(contentsOfURL: castUrl)
-    let castsJson = try! NSJSONSerialization.JSONObjectWithData(castsData!, options: .AllowFragments)
-    let castsJ = JSON(data: castsData!)
-    let casts = Reflect<Cast>.mapObjects(json: castsJ.rawValue)
-    let cast = casts.first
-    debugPrint(casts)
-//    self.useAFNetworking()
-    useAlamofire()
+//    let castUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("casts", ofType: nil)!)
+//    let castsData = NSData(contentsOfURL: castUrl)
+//    let castsJson = try! NSJSONSerialization.JSONObjectWithData(castsData!, options: .AllowFragments)
+//    let castsJ = JSON(data: castsData!)
+//    let casts = Reflect<Cast>.mapObjects(json: castsJ.rawValue)
+//    let cast = casts.first
+//    debugPrint(casts)
+////    self.useAFNetworking()
+//    useAlamofire()
   }
   
-  func useAFNetworking() {
-    let manager = AFHTTPRequestOperationManager()
-    manager.GET("https://api.douban.com/v2/movie/subject/1764796", parameters: nil, success: { (operation, responseData) -> Void in
-      let movie = Reflect<Movie>.mapObjects(json: responseData)
-      print(movie)
-      }, failure: nil)
-  }
-  
-  func useAlamofire() {
-    request(.GET, "https://api.douban.com/v2/movie/subject/1764796", parameters: nil, encoding: .URL, headers: nil)
-      .response { request, response, data, error in
-        
-        
-        let j = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-        let json = JSON(data: data!)
-//        debugPrint(json)
-        let movie = Reflect<Movie>.mapObject(json: json.rawValue)
-        debugPrint(movie)
-    }
-  }
+//  func useAFNetworking() {
+//    let manager = AFHTTPRequestOperationManager()
+//    manager.GET("https://api.douban.com/v2/movie/subject/1764796", parameters: nil, success: { (operation, responseData) -> Void in
+//      let movie = Reflect<Movie>.mapObjects(json: responseData)
+//      print(movie)
+//      }, failure: nil)
+//  }
+//  
+//  func useAlamofire() {
+//    request(.GET, "https://api.douban.com/v2/movie/subject/1764796", parameters: nil, encoding: .URL, headers: nil)
+//      .response { request, response, data, error in
+//        
+//        
+//        let j = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+//        let json = JSON(data: data!)
+////        debugPrint(json)
+//        let movie = Reflect<Movie>.mapObject(json: json.rawValue)
+//        debugPrint(movie)
+//    }
+//  }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

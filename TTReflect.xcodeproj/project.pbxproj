@@ -682,6 +682,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsusolo.TTReflect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -694,6 +695,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsusolo.TTReflect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
 			};
 			name = Release;
 		};
@@ -706,6 +708,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsusolo.TTReflectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTReflect.app/TTReflect";
 			};
 			name = Debug;
@@ -719,6 +722,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsusolo.TTReflectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTReflect.app/TTReflect";
 			};
 			name = Release;
@@ -731,6 +735,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsusolo.TTReflectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
 				TEST_TARGET_NAME = TTReflect;
 				USES_XCTRUNNER = YES;
 			};
@@ -744,6 +749,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsusolo.TTReflectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
 				TEST_TARGET_NAME = TTReflect;
 				USES_XCTRUNNER = YES;
 			};

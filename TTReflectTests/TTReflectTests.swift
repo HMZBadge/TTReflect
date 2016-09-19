@@ -8,8 +8,8 @@
 
 import XCTest
 @testable import TTReflect
-import Alamofire
-import SwiftyJSON
+//import Alamofire
+//import SwiftyJSON
 
 class TTReflectTests: XCTestCase {
   
@@ -73,30 +73,30 @@ class TTReflectTests: XCTestCase {
     assertCast(casts)
   }
   
-  func testAlamofire() {
-     let expectation = expectationWithDescription("Alamofire request")
-    Alamofire.request(.GET, "https://api.douban.com/v2/movie/subject/1764796", parameters: nil)
-      .response { request, response, data, error in
-        let json = JSON(data: data!)
-        debugPrint(json)
-        let movie = Reflect<Movie>.mapObject(json: json.rawValue)
-        XCTAssertEqual(movie.title, "机器人9号")
-//        XCTAssertEqual(movie.images.small, "https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p494268647.jpg")
-        XCTAssertEqual(movie.subtype, "movie")
-        expectation.fulfill()
-    }
-    waitForExpectationsWithTimeout(10, handler: nil)
-  }
-  
-  func testAlamofireObjects() {
-    let expectation = expectationWithDescription("Alamofire objects request")
-    Alamofire.request(.GET, "https://api.douban.com/v2/movie/in_theaters", parameters: nil)
-      .response { request, response, data, error in
-        let json = JSON(data: data!)
-        let movie = Reflect<Movie>.mapObjects(json: json["subjects"].rawValue)
-        XCTAssertNotEqual(movie.first?.title, "")
-        expectation.fulfill()
-    }
-    waitForExpectationsWithTimeout(10, handler: nil)
-  }
+//  func testAlamofire() {
+//     let expectation = expectationWithDescription("Alamofire request")
+//    Alamofire.request(.GET, "https://api.douban.com/v2/movie/subject/1764796", parameters: nil)
+//      .response { request, response, data, error in
+//        let json = JSON(data: data!)
+//        debugPrint(json)
+//        let movie = Reflect<Movie>.mapObject(json: json.rawValue)
+//        XCTAssertEqual(movie.title, "机器人9号")
+////        XCTAssertEqual(movie.images.small, "https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p494268647.jpg")
+//        XCTAssertEqual(movie.subtype, "movie")
+//        expectation.fulfill()
+//    }
+//    waitForExpectationsWithTimeout(10, handler: nil)
+//  }
+//  
+//  func testAlamofireObjects() {
+//    let expectation = expectationWithDescription("Alamofire objects request")
+//    Alamofire.request(.GET, "https://api.douban.com/v2/movie/in_theaters", parameters: nil)
+//      .response { request, response, data, error in
+//        let json = JSON(data: data!)
+//        let movie = Reflect<Movie>.mapObjects(json: json["subjects"].rawValue)
+//        XCTAssertNotEqual(movie.first?.title, "")
+//        expectation.fulfill()
+//    }
+//    waitForExpectationsWithTimeout(10, handler: nil)
+//  }
 }
