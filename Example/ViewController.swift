@@ -24,9 +24,9 @@ class ViewController: UIViewController {
 //    debugPrint(home)
     
     
-    let bookUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("book", ofType: nil)!)
-    let bookData = NSData(contentsOfURL: bookUrl)
-    let json = try! NSJSONSerialization.JSONObjectWithData(bookData!, options: NSJSONReadingOptions.AllowFragments)
+    let bookUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "book", ofType: nil)!)
+    let bookData = try? Data(contentsOf: bookUrl)
+    let json = try! JSONSerialization.jsonObject(with: bookData!, options: JSONSerialization.ReadingOptions.allowFragments)
 //    let book = Reflect<Book>.mapObject(json: json)
 //    let books = Reflect2<[Book]>.mapping(json: json)
 //    let books = Reflect<Book>.mapObjects(json: json)

@@ -7,13 +7,13 @@
 //
 
 import XCTest
-@testable import TTReflect
+//@testable import TTReflect
 //import Alamofire
 //import SwiftyJSON
 
 class TTReflectTests: XCTestCase {
   
-  func assertBook(book: Book) {
+  func assertBook(_ book: Book) {
     XCTAssertEqual(book.tt, "满月之夜白鲸现")
     XCTAssertEqual(book.tags.count, 8)
     XCTAssertEqual(book.tags.first?.count, 136)
@@ -26,15 +26,15 @@ class TTReflectTests: XCTestCase {
     XCTAssertNotNil(book.test_null)
   }
   
-  func assertCast(casts: [Cast]) {
+  func assertCast(_ casts: [Cast]) {
     XCTAssertEqual(casts.count, 4)
     XCTAssertEqual(casts.first?.alt, "http://movie.douban.com/celebrity/1054395/")
     XCTAssertEqual(casts.last?.avatars.medium, "https://img1.doubanio.com/img/celebrity/medium/42033.jpg")
   }
   
   func testConvert() {
-    let convertUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("convert", ofType: nil)!)
-    let convertData = NSData(contentsOfURL: convertUrl)
+    let convertUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "convert", ofType: nil)!)
+    let convertData = try? Data(contentsOf: convertUrl)
     let convert = Reflect<Convert>.mapObject(data: convertData)
     XCTAssertEqual(convert.scns, 42.3)
     XCTAssertEqual(convert.ncss, "23.98")
@@ -44,32 +44,32 @@ class TTReflectTests: XCTestCase {
   }
   
   func testBookData() {
-    let bookUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("book", ofType: nil)!)
-    let bookData = NSData(contentsOfURL: bookUrl)
+    let bookUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "book", ofType: nil)!)
+    let bookData = try? Data(contentsOf: bookUrl)
     let book = Reflect<Book>.mapObject(data: bookData)
     assertBook(book)
   }
   
   func testBookJson() {
-    let bookUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("book", ofType: nil)!)
-    let bookData = NSData(contentsOfURL: bookUrl)
-    let json = try! NSJSONSerialization.JSONObjectWithData(bookData!, options: .MutableContainers)
-    let book = Reflect<Book>.mapObject(json: json)
+    let bookUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "book", ofType: nil)!)
+    let bookData = try? Data(contentsOf: bookUrl)
+    let json = try! JSONSerialization.jsonObject(with: bookData!, options: .mutableContainers)
+    let book = Reflect<Book>.mapObject(json: json as AnyObject?)
     assertBook(book)
   }
   
   func testCastData() {
-    let castUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("casts", ofType: nil)!)
-    let castsData = NSData(contentsOfURL: castUrl)
+    let castUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "casts", ofType: nil)!)
+    let castsData = try? Data(contentsOf: castUrl)
     let casts = Reflect<Cast>.mapObjects(data: castsData)
     assertCast(casts)
   }
   
   func testCastJson() {
-    let castUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("casts", ofType: nil)!)
-    let castsData = NSData(contentsOfURL: castUrl)
-    let castsJson = try! NSJSONSerialization.JSONObjectWithData(castsData!, options: .MutableContainers)
-    let casts = Reflect<Cast>.mapObjects(json: castsJson)
+    let castUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "casts", ofType: nil)!)
+    let castsData = try? Data(contentsOf: castUrl)
+    let castsJson = try! JSONSerialization.jsonObject(with: castsData!, options: .mutableContainers)
+    let casts = Reflect<Cast>.mapObjects(json: castsJson as AnyObject?)
     assertCast(casts)
   }
   
